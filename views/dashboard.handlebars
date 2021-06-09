@@ -1,0 +1,11 @@
+  
+{{> private-navbar}}
+<div class="container">
+  <h1 class="text-center">Welcome to {{ firstName }} {{ lastName }} To Do App! 🚀</h1>
+
+  <ul class="d-flex flex-wrap justify-content-between">
+    {{#each Blogs as |blog| }}
+      {{> blog-card}}
+    {{/each }}
+  </ul>
+</div>
