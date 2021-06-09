@@ -1,9 +1,9 @@
-const { User, Blogs } = require("../../models");
+const { User, blogs } = require("../../models");
 
 const renderDashboard = async (req, res) => {
   const { firstName, lastName, userId } = req.session;
 
-  const getBlog = await Blogs.findAll({
+  const getBlog = await blogs.findAll({
     where: {
       user_id: userId,
     },

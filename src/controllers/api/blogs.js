@@ -1,10 +1,10 @@
-const { User, Blogs } = require("../../models");
+const { User, blogs } = require("../../models");
 
 const getBlogs = async (req, res) => {
   try {
     const { userId } = req.session;
 
-    const getBlogs = await Blogs.findAll({
+    const getBlogs = await blogs.findAll({
       where: {
         user_id: userId,
       },
@@ -25,7 +25,7 @@ const getBlogs = async (req, res) => {
 const getBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const Blog = await Blog.findByPk(id, {
+    const getBlog = await blogs.findByPk(id, {
       include: [
         {
           model: User,
@@ -36,7 +36,7 @@ const getBlog = async (req, res) => {
     if (!Blog) {
       return res.status(404).json({ error: "Blog does not exist" });
     }
-    return res.status(200).json(Blog);
+    return res.status(200).json(getBlog);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ error: "Failed to get Blogs" });
@@ -54,7 +54,7 @@ const updateBlog = async (req, res) => {
 
     const blog = { title, description, status };
 
-    const [updated] = await blog.update(blog, { where: { id } });
+    const [updated] = await blogs.update(blog, { where: { id } });
 
     if (!updated) {
       return res.status(404).json({ error: "Blog does not exist" });
@@ -70,7 +70,7 @@ const deleteBlog = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const data = await blog.destroy({
+    const data = await blogs.destroy({
       where: {
         id,
       },
