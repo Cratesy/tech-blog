@@ -1,10 +1,10 @@
-const { User, Blog } = require("../../models");
+const { User, Blogs } = require("../../models");
 
 const getBlogs = async (req, res) => {
   try {
     const { userId } = req.session;
 
-    const Blogs = await Blog.findAll({
+    const getBlogs = await Blogs.findAll({
       where: {
         user_id: userId,
       },
@@ -15,7 +15,7 @@ const getBlogs = async (req, res) => {
       ],
     });
 
-    return res.status(200).json(Blogs);
+    return res.status(200).json(getBlogs);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ error: "Failed to get all Blogs" });

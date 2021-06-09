@@ -1,9 +1,9 @@
-const { User, Blog } = require("../../models");
+const { User, Blogs } = require("../../models");
 
 const renderDashboard = async (req, res) => {
   const { firstName, lastName, userId } = req.session;
 
-  const Blogs = await Blog.findAll({
+  const getBlog = await Blogs.findAll({
     where: {
       user_id: userId,
     },
@@ -14,7 +14,7 @@ const renderDashboard = async (req, res) => {
     ],
   });
 
-  const formattedBlogs = Blogs.map((Blog) => Blog.get({ plain: true }));
+  const formattedBlogs = getBlog.map((Blog) => Blog.get({ plain: true }));
 
   res.render("dashboard", { firstName, lastName, Blogs: formattedBlogs });
 };
@@ -23,7 +23,7 @@ const renderEditBlog = async (req, res) => {
   const { id } = req.params;
   const { userId } = req.session;
 
-  const data = await Blog.findOne({ where: { id, user_id: userId } });
+  const data = await Blogs.findOne({ where: { id, user_id: userId } });
 
   if (!data) {
     return res.redirect("/dashboard");
