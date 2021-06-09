@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Love me",
+    "description": "Don't ya you just love to learn and me!!!",
+    "user_id": 1
+  },
+  {
+    "title": "Write tests",
+    "description": "Complete tests",
+    "user_id": 1
+  },
+  {
+    "title": "Seed the database",
+    "description": "Seed the database for blogs and users",
+    "user_id": 2
+  }
+]
