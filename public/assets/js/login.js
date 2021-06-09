@@ -24,5 +24,4 @@ const handleSubmit = async (event) => {
     window.location.replace("/dashboard");
   }
 };
-
 $("#login-form").submit(handleSubmit);
