@@ -23,7 +23,7 @@ const renderEditBlog = async (req, res) => {
   const { id } = req.params;
   const { userId } = req.session;
 
-  const data = await Blogs.findOne({ where: { id, user_id: userId } });
+  const data = await blogs.findOne({ where: { id, user_id: userId } });
 
   if (!data) {
     return res.redirect("/dashboard");
