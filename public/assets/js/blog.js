@@ -1,6 +1,6 @@
 const onDelete = async (event) => {
   const id = event.currentTarget.id;
-
+  console.log(id);
   const options = {
     method: "DELETE",
     redirect: "follow",
@@ -22,7 +22,6 @@ const onEditBlog = async (event) => {
 
   const title = $("#title").val();
   const description = $("#description").val();
-  const status = $("#status").find(":selected").val();
 
   const options = {
     method: "PUT",
@@ -33,7 +32,6 @@ const onEditBlog = async (event) => {
     body: JSON.stringify({
       title,
       description,
-      status,
     }),
   };
 
