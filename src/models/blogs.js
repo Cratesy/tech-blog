@@ -40,8 +40,8 @@ const schema = {
   },
 };
 
-class blogs extends Model {}
+class Blogs extends Model {}
 
-blogs.init(schema, options);
+Blogs.init(schema, options);
 
-module.exports = blogs;
+module.exports = Blogs;
