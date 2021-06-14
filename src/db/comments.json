@@ -1,0 +1,17 @@
+[
+  {
+    "message": "mike is awesome",
+    "user_id": 2,
+    "blog_id": 1
+  },
+  {
+    "message": "I agree.",
+    "user_id": 1,
+    "blog_id": 1
+  },
+  {
+    "message": "I love mike",
+    "user_id": 1,
+    "blog_id": 2
+  }
+]
