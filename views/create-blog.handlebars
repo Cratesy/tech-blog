@@ -1,0 +1,27 @@
+{{> private-navbar}}
+<div
+  class="position-absolute top-50 start-50 translate-middle text-center w-50"
+>
+  <form name="create-blog">
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Title"
+        value=""
+      />
+    </div>
+    <div class="mb-3">
+      <textarea
+        type="text"
+        class="form-control"
+        id="description"
+        placeholder="Description"
+      ></textarea>
+    </div>
+    <div class="mb-3 d-grid gap-2">
+      <button type="submit" class="btn btn-primary mb-3">Save</button>
+    </div>
+  </form>
+</div>

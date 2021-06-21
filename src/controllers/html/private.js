@@ -1,4 +1,4 @@
-const { User, Blogs } = require("../../models");
+const { User, Blogs, Comment } = require("../../models");
 
 const renderDashboard = async (req, res) => {
   const { firstName, lastName, userId } = req.session;
@@ -34,4 +34,38 @@ const renderEditBlog = async (req, res) => {
   res.render("editBlog", Blog);
 };
 
-module.exports = { renderDashboard, renderEditBlog };
+const renderBlog = async (req, res) => {
+  const { id } = req.params;
+
+  const blogFromModel = await Blogs.findByPk(id, {
+    include: [
+      {
+        model: Comment,
+        include: [
+          {
+            model: User,
+            attributes: ["first_name", "last_name"],
+          },
+        ],
+      },
+      { model: User, attributes: ["first_name", "last_name"] },
+    ],
+  });
+
+  const blog = blogFromModel.get({ plain: true });
+
+  const comments = blog.comments.map((comment) => {
+    return {
+      ...comment,
+      myComment: req.session.userId === comment.user_id,
+    };
+  });
+
+  res.render("blog", { ...blog, comments });
+};
+
+const createBlog = async (req, res) => {
+  res.render("create-blog");
+};
+
+module.exports = { renderDashboard, renderEditBlog, createBlog, renderBlog };
