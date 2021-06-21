@@ -10,6 +10,10 @@ User.hasMany(Comment, {
   foreignKey: "user_id",
 });
 
+Blogs.hasMany(Comment, {
+  foreignKey: "user_id",
+});
+
 Blogs.belongsTo(User, {
   foreignKey: "user_id",
 });

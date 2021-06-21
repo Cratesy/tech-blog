@@ -1,7 +1,21 @@
-const renderHome = (req, res) => {
+const { Blogs, User } = require("../../models");
+const transformBlogs = require("../../utils/index");
+
+const renderHome = async (req, res) => {
   try {
+    const blogModel = await Blogs.findAll({
+      include: {
+        model: User,
+        attributes: ["first_name", "last_name"],
+      },
+    });
+
     const { isLoggedIn } = req.session;
-    res.render("home", { isLoggedIn });
+
+    const blogs = transformBlogs(blogModel);
+    console.log(blogs);
+
+    res.render("home", { isLoggedIn, blogs });
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ error: "Failed to render" });

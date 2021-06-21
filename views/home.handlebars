@@ -6,11 +6,13 @@
 {{/if}}
 <div class="text-center">
   <h1>Tech Blogs</h1>
+  <hr />
 {{#if isLoggedIn}}
-
+{{#each blogs}}
 {{> blog-cards}}
+{{/each}}
 {{else}}
   <h3>If you can't Blog, Tech Blog can...</h3>
-    <h4>Log in to see blogs!</h4>
+    <h4>Sign up / Log in to see blogs!</h4>
 {{/if}}
 </div>
