@@ -16,7 +16,6 @@ const renderHome = async (req, res) => {
     const { isLoggedIn } = req.session;
 
     const blogs = transformBlogs(blogModel);
-    console.log(blogs);
 
     res.render("home", { isLoggedIn, blogs });
   } catch (err) {
