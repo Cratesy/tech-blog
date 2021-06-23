@@ -56,7 +56,7 @@ const addComment = async (event) => {
   const { id } = event.currentTarget;
   const message = $("#comment").val();
 
-  const requestBody = { message };
+  const requestBody = { message, blog_id: id };
 
   const options = {
     method: "POST",
@@ -66,7 +66,8 @@ const addComment = async (event) => {
     redirect: "follow",
     body: JSON.stringify(requestBody),
   };
-  const response = await fetch(`/api/blogs/${id}/comments`, options);
+
+  const response = await fetch(`/api/comments`, options);
 
   if (response.status === 200) {
     window.location.replace(window.location.pathname);
@@ -124,6 +125,6 @@ const addBlog = async (event) => {
 
 $('form[name="create-blog"]').submit(addBlog);
 $('[name="delete-comment-btn"]').click(deleteComment);
-$('[name="post-comment"]').submit(addComment);
+$('form[name="comment-form"]').submit(addComment);
 $('[name="delete-btn"]').click(onDelete);
 $('[name="edit-blog-form"]').submit(onEditBlog);
