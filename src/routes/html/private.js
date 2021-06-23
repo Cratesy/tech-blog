@@ -10,7 +10,7 @@ const {
 const router = Router();
 
 router.get("/dashboard", renderDashboard);
-router.get("/dashboard/edit/:id", renderEditBlog);
+router.get("/edit-blog/:id", renderEditBlog);
 router.get("/create-blog", createBlog);
 router.get("/blog/:id", renderBlog);
 
