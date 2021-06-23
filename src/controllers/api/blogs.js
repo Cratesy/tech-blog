@@ -45,17 +45,13 @@ const getBlog = async (req, res) => {
 
 const createBlog = async (req, res) => {
   try {
-    const { title, description, status } = req.body;
-    const { id } = req.params;
+    const { title, description } = req.body;
 
-    const blog = { title, description, status };
+    const blog = { title, description, user_id: req.session.userId };
 
-    const [updated] = await Blogs.create(blog, { where: { id } });
+    await Blogs.create(blog);
 
-    if (!updated) {
-      return res.status(404).json({ error: "Blog does not exist" });
-    }
-    return res.status(200).json({ data: "Update successful" });
+    return res.status(200).json({ data: "Create successful" });
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ error: "Failed to create Blog" });
