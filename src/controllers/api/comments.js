@@ -24,4 +24,4 @@ const handleCommentForPost = async (req, res) => {
   res.status(200).json({ message: "success" });
 };
 
-(module.exports = handleDeleteComment), handleCommentForPost;
+module.exports = { handleDeleteComment, handleCommentForPost };
