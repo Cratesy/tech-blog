@@ -19,6 +19,7 @@ const schema = {
       model: "user",
       key: "id",
     },
+    onDelete: "CASCADE",
   },
   blog_id: {
     type: DataTypes.INTEGER,
@@ -27,6 +28,7 @@ const schema = {
       model: "blogs",
       key: "id",
     },
+    onDelete: "CASCADE",
   },
 };
 

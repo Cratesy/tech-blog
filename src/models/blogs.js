@@ -25,11 +25,6 @@ const schema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  status: {
-    type: DataTypes.ENUM("To Do", "In Progress", "Done"),
-    allowNull: false,
-    defaultValue: "To Do",
-  },
   user_id: {
     type: DataTypes.INTEGER,
     references: {

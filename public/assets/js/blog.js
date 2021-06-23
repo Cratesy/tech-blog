@@ -3,9 +3,15 @@ const onDelete = async (event) => {
 
   const options = {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
     redirect: "follow",
+    body: JSON.stringify({
+      blog_id: id,
+    }),
   };
-
+  
   const response = await fetch(`/api/blogs/${id}`, options);
 
   if (response.status !== 200) {
@@ -50,8 +56,6 @@ const addComment = async (event) => {
   const { id } = event.currentTarget;
   const message = $("#comment").val();
 
-  console.log(id, message);
-
   const requestBody = { message };
 
   const options = {
@@ -91,6 +95,34 @@ const deleteComment = async (event) => {
   }
 };
 
+const addBlog = async (event) => {
+  const { id } = event.currentTarget;
+
+  const title = $("#title").val();
+  const description = $("#description").val();
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({
+      title,
+      description,
+    }),
+  };
+
+  const response = await fetch(`/api/blog/${id}`, options);
+
+  if (response.status === 200) {
+    window.location.replace(window.location.pathname);
+  } else {
+    console.log("Failed to add blog");
+  }
+};
+
+$('[name="save-blog"]').submit(addBlog)
 $('[name="delete-comment-btn"]').click(deleteComment);
 $('[name="post-comment"]').submit(addComment);
 $('[name="delete-btn"]').click(onDelete);

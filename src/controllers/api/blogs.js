@@ -43,8 +43,23 @@ const getBlog = async (req, res) => {
   }
 };
 
-const createBlog = (req, res) => {
-  res.send("create");
+const createBlog = async (req, res) => {
+  try {
+    const { title, description, status } = req.body;
+    const { id } = req.params;
+
+    const blog = { title, description, status };
+
+    const [updated] = await Blogs.create(blog, { where: { id } });
+
+    if (!updated) {
+      return res.status(404).json({ error: "Blog does not exist" });
+    }
+    return res.status(200).json({ data: "Update successful" });
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ error: "Failed to create Blog" });
+  }
 };
 
 const updateBlog = async (req, res) => {
