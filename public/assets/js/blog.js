@@ -11,7 +11,7 @@ const onDelete = async (event) => {
       blog_id: id,
     }),
   };
-  
+
   const response = await fetch(`/api/blogs/${id}`, options);
 
   if (response.status !== 200) {
@@ -56,7 +56,7 @@ const addComment = async (event) => {
   const { id } = event.currentTarget;
   const message = $("#comment").val();
 
-  const requestBody = { message };
+  const requestBody = { message, blog_id: id };
 
   const options = {
     method: "POST",
@@ -66,7 +66,8 @@ const addComment = async (event) => {
     redirect: "follow",
     body: JSON.stringify(requestBody),
   };
-  const response = await fetch(`/api/blogs/${id}/comments`, options);
+
+  const response = await fetch(`/api/comments`, options);
 
   if (response.status === 200) {
     window.location.replace(window.location.pathname);
@@ -96,7 +97,7 @@ const deleteComment = async (event) => {
 };
 
 const addBlog = async (event) => {
-  const { id } = event.currentTarget;
+  event.preventDefault();
 
   const title = $("#title").val();
   const description = $("#description").val();
@@ -113,17 +114,17 @@ const addBlog = async (event) => {
     }),
   };
 
-  const response = await fetch(`/api/blog/${id}`, options);
+  const response = await fetch(`/api/blogs`, options);
 
   if (response.status === 200) {
-    window.location.replace(window.location.pathname);
+    window.location.replace("/dashboard");
   } else {
     console.log("Failed to add blog");
   }
 };
 
-$('[name="save-blog"]').submit(addBlog)
+$('form[name="create-blog"]').submit(addBlog);
 $('[name="delete-comment-btn"]').click(deleteComment);
-$('[name="post-comment"]').submit(addComment);
+$('form[name="comment-form"]').submit(addComment);
 $('[name="delete-btn"]').click(onDelete);
 $('[name="edit-blog-form"]').submit(onEditBlog);

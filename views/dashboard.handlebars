@@ -1,7 +1,12 @@
 {{> private-navbar}}
 <div class="container">
   <h1 class="text-center">Welcome {{ firstName }} {{ lastName }}, your Tech-Blogs!</h1>
-
+  <div class="text-center">
+    <a
+      href="/create-blog"
+      class="btn btn-primary card-link"
+    >Create Blog</a>
+  </div>
   <ul class="d-flex flex-wrap justify-content-between">
     {{#each Blogs as |blog| }}
       {{> blog-card}}
