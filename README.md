@@ -41,9 +41,9 @@ npm install
 
 As a user, i am presented with the homepage which tells me to log in or sign up to view blogs.
 as a user i click on sign up fill out all the fields required and then presented with the login page so that i can log in using the details i signed up with.
-as a user once i've logged in i can see all blogs created on homepage i can go to dashboard to see all blogs i've created can also edit them and delete them here.
-as a user i can create a blog on the homepage view a single blog and comments and also add my own comments to it.
-as a user i can log out 
+as a user once i've logged in i can see all blogs created on homepage i can go to the dashboard to see all blogs i've created can also edit them and delete them here.
+as a user i can create a blog on the dashboard/homepage and from homepage view a single blog and comments and also add my own comments to it.
+as a user i can log out
 
 ## License
 
@@ -63,7 +63,7 @@ https://git.heroku.com/stormy-bayou-37854.git
 
 ## screenshots
 
-<img src="./public/assets/img/home%20page%20for%20logged%20in%20user%20to%20see%20everyones%20blogs%20blog%20app.jpg"
+<img src="./public/assets/img/landing%20page%20blog%20app.jpg"
 alt="landing page"/>
 <img src="./public/assets/img/dashboard%20page%20for%20user%20blog%20app.jpg"
 alt="dashboard"/>
