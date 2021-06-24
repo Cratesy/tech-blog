@@ -59,7 +59,7 @@ None were need
 
 ## deployed url
 
-https://git.heroku.com/stormy-bayou-37854.git
+https://stormy-bayou-37854.herokuapp.com/
 
 ## screenshots
 
